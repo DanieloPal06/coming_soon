@@ -7,4 +7,8 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  server: {
+    port: 8080, // Configura el puerto a 8080
+    host: '0.0.0.0', // Permite que la app sea accesible desde cualquier dirección IP
+  },
 });
