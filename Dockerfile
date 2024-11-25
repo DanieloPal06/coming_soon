@@ -1,27 +1,13 @@
-# Etapa 1: Construcción
-FROM node:18 AS build
+FROM node:18-alpine
 
-# Establecer el directorio de trabajo
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Copiar archivos del proyecto
 COPY package*.json ./
-COPY . .
 
-# Instalar dependencias
 RUN npm install
 
-# Construir la aplicación
-RUN npm run build
+COPY dist ./dist
 
-# Etapa 2: Servir la aplicación
-FROM nginx:alpine
+EXPOSE 8080
 
-# Copiar los archivos de construcción a la carpeta de Nginx
-COPY --from=build /app/dist /usr/share/nginx/html
-
-# Exponer el puerto 80
-EXPOSE 80
-
-# Comando para iniciar Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "-e", "require('http').createServer((req, res) => { res.writeHead(200); res.end('Hello from Cloud Run!'); }).listen(8080, () => { console.log('Listening on port 8080'); });"]

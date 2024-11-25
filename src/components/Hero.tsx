@@ -1,4 +1,3 @@
-import { Table2 } from 'lucide-react';
 
 export function Hero() {
   return (
@@ -7,7 +6,7 @@ export function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 relative">
         <div className="text-center">
           <div className="flex justify-center mb-8">
-            <Table2 className="h-16 w-16 text-blue-400" />
+            
           </div>
           <h1 className="text-5xl font-bold tracking-tight mb-6">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
